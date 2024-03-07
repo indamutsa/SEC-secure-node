@@ -59,8 +59,8 @@ module.exports = () => {
         });
       }
       /**
-       * @todo: Log the user in by saving the userid to the session and redirect to the index page
-       * @todo: Don't forget about 'Remember me'!
+       * Log the user in by saving the userid to the session and redirect to the index page
+       * Add 'Remember me' by setting a cookie with a token and saving the token to the user with a max age
        */
 
       req.session.userId = user.id;
@@ -68,6 +68,14 @@ module.exports = () => {
         type: 'success',
         text: 'You have been logged in',
       });
+
+      // Setting a cookie with a token and saving the token to the user with a max age
+      if (req.body.remember) {
+        req.sessionOptions.maxAge = 1000 * 60 * 60 * 24 * 7; // 1 week
+        req.session.rememberme = req.sessionOptions.maxAge;
+      } else {
+        req.session.rememberme = null;
+      }
 
       return res.redirect('/');
     } catch (err) {
@@ -81,11 +89,13 @@ module.exports = () => {
    */
   router.get('/logout', (req, res) => {
     req.session.userId = null;
+    req.session.rememberme = null;
+
     req.session.messages.push({
       type: 'info',
       text: 'You have been logged out',
     });
-    return redirect('/');
+    return res.redirect('/');
   });
 
   return router;

@@ -64,7 +64,8 @@ module.exports = (config) => {
   app.use(cookieParser());
 
   /**
-   * @todo: Implement a middleware that restores the user from the database if `userId` is present on the session
+   * A middleware that restores the user from the database if `userId` is present on the session
+   * Which deseriazes the user from the session and adds it to the request object
    */
   app.use(async (req, res, next) => {
     if (!req.session.userId) return next();
@@ -73,6 +74,9 @@ module.exports = (config) => {
       req.session.userId = null;
       return next();
     }
+
+    req.sessionOptions.maxAge =
+      req.session.rememberme || req.sessionOptions.maxAge;
     req.user = user;
     res.locals.user = user; // This makes the user available in all the template views
     return next(); // Continue with the request
