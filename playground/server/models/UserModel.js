@@ -43,7 +43,7 @@ const userSchema = mongoose.Schema(
   }
 );
 
-// Thi function adds a method that hash the password
+// This function adds a method that hash the password
 async function generateHash(password) {
   const saltRounds = 10;
   return await bcrypt.hash(password, saltRounds);
