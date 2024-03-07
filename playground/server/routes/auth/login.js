@@ -26,13 +26,21 @@ module.exports = () => {
 
       if (!user) {
         // To be ambiguous, we don't want to tell the user if the username or password is wrong
-        errors.push('User not found');
-        errors.push('Invalid password');
+        errors.push('username');
+        errors.push('password');
 
         // Render the page again and show the errors
         req.session.messages.push({
           type: 'danger',
           text: 'Invalid username or password',
+        });
+      } else if (user && !user.verified) {
+        errors.push('username');
+        errors.push('password');
+
+        req.session.messages.push({
+          type: 'danger',
+          text: 'Please verify your email address before logging in',
         });
       } else {
         const isValid = await user.comparePassword(
@@ -40,8 +48,8 @@ module.exports = () => {
           user.password
         );
         if (!isValid) {
-          errors.push('User not found');
-          errors.push('Invalid password');
+          errors.push('username');
+          errors.push('password');
 
           req.session.messages.push({
             type: 'danger',

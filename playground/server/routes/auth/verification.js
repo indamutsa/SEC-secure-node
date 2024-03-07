@@ -12,9 +12,24 @@ module.exports = () => {
   router.get('/verify/:userId/:token', async (req, res, next) => {
     try {
       /**
-       * @todo: Validate verification credentials and verify if valid
+       * Validate verification credentials and verify if valid
        */
-      return next('Not implemented!');
+      const user = await UserService.findById(req.params.userId);
+      if (!user || user.verificationToken !== req.params.token) {
+        req.session.messages.push({
+          type: 'danger',
+          text: 'Invalid verification credentials',
+        });
+      } else {
+        user.verified = true;
+        await user.save();
+        req.session.messages.push({
+          type: 'success',
+          text: 'Your account has been verified',
+        });
+      }
+
+      return res.redirect('/');
     } catch (err) {
       return next(err);
     }
