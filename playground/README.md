@@ -3,3 +3,7 @@ In this playground, we will hash and validate the password using bcrypt. We woul
 ```bash
 npm install bcrypt
 ```
+
+After hashing the password, we will use the bcrypt compare method to validate the password. If the password is valid, we will return the user details. If the password is invalid, we will return an error message.
+
+![alt text](image/hashed.png)
