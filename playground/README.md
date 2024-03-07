@@ -7,3 +7,20 @@ npm install bcrypt
 After hashing the password, we will use the bcrypt compare method to validate the password. If the password is valid, we will return the user details. If the password is invalid, we will return an error message.
 
 ![alt text](image/hashed.png)
+
+Regular cookie based authentication follows the following steps in the image:
+
+![alt text](image/cookie-based.png)
+
+Cookies and XHR calls based authentication follows the following steps in the image:
+
+![alt text](image/xhr-cookies.png)
+
+Authentication using JWT follows the following steps in the image:
+
+![alt text](image/jwt.png)
+
+JWT Tokens
+
+![alt text](image/jwt-token.png)
+![alt text](image/jwt-limitations.png)
