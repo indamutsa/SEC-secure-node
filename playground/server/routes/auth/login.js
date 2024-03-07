@@ -32,7 +32,7 @@ module.exports = () => {
         } else {
           req.session.rememberme = null;
         }
-        return res.redirect('/');
+        return res.redirect(req.session.returnTo || '/');
       } catch (err) {
         return next(err);
       }
