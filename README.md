@@ -1,25 +1,8 @@
-# Web Security with Node.js
+In this module, we will hash and validate the password using bcrypt. We would like to ensure that the password is hashed and stored securely in the database. We will use mongo pre-hook savers to hash the password before saving it to the database and then bcrypt compare method to validate the password.
 
-This project aims to explore the security features of Node.js and how to use them to build secure web applications.
+![alt text](image/home.png)
 
-## Setup
+We will see how we register a user and then hash the password before saving it to the database. We will use the bcrypt compare method to validate the password. If the password is valid, we will return the user details. If the password is invalid, we will return an error message.
 
-1. Install Node.js and npm
-2. Clone the repository
-
-```bash
-git clone repo-url
-```
-
-3. Install the dependencies
-
-```bash
-npm install
-```
-
-4. Install mongodb using docker
-
-```bash
-docker pull mongo
-docker run -d -p 27017:27017 --name mongodb -v ~/data:/data/db mongo
-```
+![alt text](image/registration.png)
+![alt text](image/hashed.png)
