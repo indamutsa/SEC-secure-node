@@ -4,7 +4,7 @@ Throughout this project, we will implement authentication and authorization in w
 
 ## Module Overview
 
-The content is divided into several sections, each designed to build on the knowledge gained in the previous section. Please to the branches for more information. Here's a breakdown of what each section covers:
+The content is divided into several sections, each designed to build on the knowledge gained in the previous section. Please checkout to the appropriate branch for more information. Here's a breakdown of what each section covers:
 
 - Branch `main`: This branch contains the initial setup of the project and the basic structure of the application.
   You should set up mongodb using docker and install the dependencies using `npm install`.
