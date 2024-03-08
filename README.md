@@ -1,25 +1,48 @@
 # Web Security with Node.js
 
-This project aims to explore the security features of Node.js and how to use them to build secure web applications.
+Throughout this project, we will implement authentication and authorization in web applications using node.js and passport.js. We will understand how to secure a Node.js application using MongoDB for database management and Passport.js for handling user authentication and authorization. The module also covers the integration of single sign-on (SSO) functionality using GitHub OAuth2.
 
-## Setup
+## Module Overview
 
-1. Install Node.js and npm
-2. Clone the repository
+The content is divided into several sections, each designed to build on the knowledge gained in the previous section. Please to the branches for more information. Here's a breakdown of what each section covers:
 
-```bash
-git clone repo-url
-```
+- Branch `main`: This branch contains the initial setup of the project and the basic structure of the application.
+  You should set up mongodb using docker and install the dependencies using `npm install`.
+  To install the mongodb using docker, run the following command:
 
-3. Install the dependencies
+  ```bash
+  docker pull mongo
+  docker run -d -p 27017:27017 --name mongodb -v ~/data:/data/db mongo
+  ```
 
-```bash
-npm install
-```
+And then you are good to go.
 
-4. Install mongodb using docker
+- Branch `user registration`: This branch covers how to implement user registration and management functionality
 
-```bash
-docker pull mongo
-docker run -d -p 27017:27017 --name mongodb -v ~/data:/data/db mongo
-```
+  - **Registering New Users**: Covers how to implement user registration functionality.
+  - **Why Plaintext Passwords Are Bad**: Discusses the security risks associated with storing passwords in plaintext.
+  - **Hashing and Validating Passwords with bcrypt**: Shows how to securely store passwords using bcrypt hashing.
+  - **Implementing Login and Logout**: Teaches how to add login and logout capabilities to the application.
+  - **Deserializing the Logged In User from the Database**: Explains how to retrieve user information from the database upon login.
+  - **Offer Remember Me**: Adds a "Remember Me" feature for user convenience.
+  - **Require User Verification**: Implements email verification for new users.
+  - **Resetting Passwords & Implementing the Password Reset Flow**: Guides through the process of allowing users to reset their forgotten passwords.
+
+- Branch `authentication-passport`: This branch covers how to implement authentication and authorization in web applications using passport and JWT tokens.
+
+  - **Introduction to Passport.js**: Introduces the Passport.js library and its role in authentication.
+  - **Setting Up Passport.js for Local Authentication**: Demonstrates how to set up Passport.js for local authentication.
+  - **Implementing JWT Authentication**: Shows how to implement JWT-based authentication.
+  - **Protecting Routes with JWT Authentication**: Explains how to protect routes using JWT authentication.
+  - **Implementing Role-Based Access Control**: Guides through the process of implementing role-based access control.
+  - **Implementing User Profile and User Management**: Demonstrates how to implement user profile and user management functionality.
+
+- Branch `SSO`: This branch covers how to integrate single sign-on (SSO) functionality using GitHub OAuth2. It covers advanced Authentication Techniques and workflow that are essential for building secure and user-friendly web services with social login.
+  - **Authentication, Authorization, and Single Sign-On (SSO)**: Introduces the concepts of authentication vs. authorization and the role of SSO.
+  - **The GitHub OAuth2 Authorization (and Authentication) Flow**: Details how to integrate GitHub OAuth2 for authentication.
+  - **Prepare Passport.js for GitHub OAuth2 & Extend the Application for Single Sign-On**: Demonstrates how to set up and integrate Passport.js for handling GitHub OAuth2.
+  - **Finalize and Test the Single Sign-On Flow**: Concludes the module with final touches and testing of the SSO implementation.
+
+## Conclusion
+
+By the end of project, we will have a comprehensive understanding of how to implement secure authentication and authorization in their web applications, including using OAuth2 for single sign-on.
