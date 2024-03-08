@@ -24,3 +24,11 @@ JWT Tokens
 
 ![alt text](image/jwt-token.png)
 ![alt text](image/jwt-limitations.png)
+
+## Authentication, Authorization, and Single Sign-On (SSO)
+
+![alt text](image/auth.png)
+![alt text](image/sso.png)
+![alt text](image/sso-standards.png)
+![alt text](image/github-sso.png)
+![alt text](image/requirements-github.png)

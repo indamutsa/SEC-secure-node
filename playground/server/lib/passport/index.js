@@ -71,6 +71,35 @@ module.exports = (config) => {
     )
   );
 
+  passport.use(
+    new GitHubStrategy(
+      {
+        clientID: config.GITHUB_CLIENT_ID,
+        clientSecret: config.GITHUB_CLIENT_SECRET,
+        scope: ['user:email'],
+        callbackURL: 'http://localhost:3000/auth/github/callback',
+        passReqToCallback: true,
+      },
+      async (req, accessToken, refreshToken, profile, done) => {
+        try {
+          console.log(profile);
+          // const user = await UserService.findByGithubId(profile.id);
+          // if (user) {
+          //   return done(null, user);
+          // }
+          // const newUser = await UserService.create({
+          //   githubId: profile.id,
+          //   username: profile.username,
+          //   email: profile.emails[0].value,
+          // });
+          return done(null, false);
+        } catch (err) {
+          return done(err);
+        }
+      }
+    )
+  );
+
   passport.serializeUser((user, done) => {
     done(null, user.id);
   });
