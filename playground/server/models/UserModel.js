@@ -37,11 +37,26 @@ const userSchema = mongoose.Schema(
       unique: true,
       default: () => crypto.randomBytes(20).toString('hex'), // generate a random token for the user to verify them
     },
+    oauthprofiles: [
+      {
+        provider: {
+          type: String,
+        },
+        profileId: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
+
+userSchema.index({
+  'oauthprofiles.provider': 1,
+  'oauthprofiles.profileId': 1,
+});
 
 // This function adds a method that hash the password
 async function generateHash(password) {

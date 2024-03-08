@@ -32,3 +32,7 @@ JWT Tokens
 ![alt text](image/sso-standards.png)
 ![alt text](image/github-sso.png)
 ![alt text](image/requirements-github.png)
+
+The profile looks like this when coming from the GitHub API:
+
+![alt text](image/profile.png)

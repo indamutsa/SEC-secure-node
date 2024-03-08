@@ -54,7 +54,7 @@ module.exports = (config) => {
       ],
       resave: false,
       saveUninitialized: true,
-      sameSite: 'strict',
+      sameSite: 'lax', // to avoid creating a new session on every request in Chrome
       maxAge: null,
     })
   );

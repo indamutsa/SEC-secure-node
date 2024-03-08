@@ -82,17 +82,18 @@ module.exports = (config) => {
       },
       async (req, accessToken, refreshToken, profile, done) => {
         try {
-          console.log(profile);
-          // const user = await UserService.findByGithubId(profile.id);
-          // if (user) {
-          //   return done(null, user);
-          // }
-          // const newUser = await UserService.create({
-          //   githubId: profile.id,
-          //   username: profile.username,
-          //   email: profile.emails[0].value,
-          // });
-          return done(null, false);
+          req.session.tempOAuthProfile = null;
+          const user = await UserService.findByOAuthProfile(
+            profile.provider,
+            profile.id
+          );
+          if (!user) {
+            req.session.tempOAuthProfile = {
+              provider: profile.provider,
+              profileId: profile.id,
+            };
+          }
+          return done(null, user);
         } catch (err) {
           return done(err);
         }
