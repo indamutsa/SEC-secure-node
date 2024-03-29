@@ -35,15 +35,30 @@ const userSchema = mongoose.Schema(
       required: true,
       index: true,
       unique: true,
-      default: () => crypto.randomBytes(20).toString('hex'),
+      default: () => crypto.randomBytes(20).toString('hex'), // generate a random token for the user to verify them
     },
+    oauthprofiles: [
+      {
+        provider: {
+          type: String,
+        },
+        profileId: {
+          type: String,
+        },
+      },
+    ],
   },
   {
     timestamps: true,
   }
 );
 
-// Thi function adds a method that hash the password
+userSchema.index({
+  'oauthprofiles.provider': 1,
+  'oauthprofiles.profileId': 1,
+});
+
+// This function adds a method that hash the password
 async function generateHash(password) {
   const saltRounds = 10;
   return await bcrypt.hash(password, saltRounds);
@@ -62,7 +77,7 @@ userSchema.pre('save', async function (next) {
 });
 
 // Method to compare the password for the user
-userSchema.methods.comparePassword = async (candidatePassword) => {
+userSchema.methods.comparePassword = async function (candidatePassword) {
   return await bcrypt.compare(candidatePassword, this.password);
 };
 
