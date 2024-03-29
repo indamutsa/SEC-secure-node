@@ -1,3 +1,19 @@
+To get started with the playground, you need to install the following packages:
+
+```bash
+# Install the required packages
+npm install
+
+# Create a data folder to store the MongoDB data
+mkdir data
+
+# Pull the MongoDB Docker image and run the MongoDB container
+docker pull mongo
+docker run -d -p 37017:27017 --name mongodb -v ./data:/data/db mongo
+```
+
+Start the server using `npm run dev` and navigate to `http://localhost:3000` in your browser.
+
 In this playground, we will hash and validate the password using bcrypt. We would like to ensure that the password is hashed and stored securely in the database. We will use mongo pre-hook savers to hash the password before saving it to the database and then bcrypt compare method to validate the password.
 
 ```bash
