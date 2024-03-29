@@ -8,10 +8,17 @@ The content is divided into several sections, each designed to build on the know
 
 - Branch `main`: This branch contains the initial setup of the project and the basic structure of the application.
   You should set up mongodb using docker and install the dependencies using `npm install`.
-  To install the mongodb using docker, run the following command:
+
+To get started with the playground, you need to install the following packages:
 
 ```bash
+# Install the required packages
+npm install
+
+# Create a data folder to store the MongoDB data
 mkdir data
+
+# Pull the MongoDB Docker image and run the MongoDB container
 docker pull mongo
 docker run -d -p 37017:27017 --name mongodb -v ./data:/data/db mongo
 ```
