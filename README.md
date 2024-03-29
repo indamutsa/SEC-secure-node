@@ -10,13 +10,13 @@ The content is divided into several sections, each designed to build on the know
   You should set up mongodb using docker and install the dependencies using `npm install`.
   To install the mongodb using docker, run the following command:
 
-  ```bash
-  mkdir data
-  docker pull mongo
-  docker run -d -p 37017:27017 --name mongodb -v ./data:/data/db mongo
-  ```
+```bash
+mkdir data
+docker pull mongo
+docker run -d -p 37017:27017 --name mongodb -v ./data:/data/db mongo
+```
 
-  Start the server using `npm run dev` and navigate to `http://localhost:3000` in your browser.
+Start the server using `npm run dev` and navigate to `http://localhost:3000` in your browser.
 
 And then you are good to go.
 
