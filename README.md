@@ -2,6 +2,8 @@
 
 Throughout this project, we will implement authentication and authorization in web applications using node.js and passport.js. We will understand how to secure a Node.js application using MongoDB for database management and Passport.js for handling user authentication and authorization. The module also covers the integration of single sign-on (SSO) functionality using GitHub OAuth2.
 
+![alt text](playground/image/github-sso.png)
+
 ## Module Overview
 
 The content is divided into several sections, each designed to build on the knowledge gained in the previous section. Please checkout to the appropriate branch for more information. Here's a breakdown of what each section covers:
