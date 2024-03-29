@@ -11,8 +11,9 @@ The content is divided into several sections, each designed to build on the know
   To install the mongodb using docker, run the following command:
 
   ```bash
+  mkdir ~/data
   docker pull mongo
-  docker run -d -p 27017:27017 --name mongodb -v ~/data:/data/db mongo
+  docker run -d -p 37017:27017 --name mongodb -v ~/data:/data/db mongo
   ```
 
 And then you are good to go.
@@ -37,7 +38,7 @@ And then you are good to go.
   - **Implementing Role-Based Access Control**: Guides through the process of implementing role-based access control.
   - **Implementing User Profile and User Management**: Demonstrates how to implement user profile and user management functionality.
 
-- Branch `SSO`: This branch covers how to integrate single sign-on (SSO) functionality using GitHub OAuth2. It covers advanced Authentication Techniques and workflow that are essential for building secure and user-friendly web services with social login.
+- Branch `sso-social`: This branch covers how to integrate single sign-on (SSO) functionality using GitHub OAuth2. It covers advanced Authentication Techniques and workflow that are essential for building secure and user-friendly web services with social login.
   - **Authentication, Authorization, and Single Sign-On (SSO)**: Introduces the concepts of authentication vs. authorization and the role of SSO.
   - **The GitHub OAuth2 Authorization (and Authentication) Flow**: Details how to integrate GitHub OAuth2 for authentication.
   - **Prepare Passport.js for GitHub OAuth2 & Extend the Application for Single Sign-On**: Demonstrates how to set up and integrate Passport.js for handling GitHub OAuth2.
